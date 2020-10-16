@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_THOUGHTS } from '../utils/queries';
-import ThoughtList from '../components/ThoughtList';;
+import ThoughtList from '../components/ThoughtList';
 
 const Home = () => {
   // use useQuery hook to make query request
@@ -10,7 +10,7 @@ const Home = () => {
   console.log(thoughts);
 
   return (
-    <main>
+  <main>
     <div className="flex-row justify-space-between">
       <div className="col-12 mb-3">
         {loading ? (
