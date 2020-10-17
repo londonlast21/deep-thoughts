@@ -11,6 +11,7 @@ const Home = () => {
 
   // use object destructuring to extract `data` from the `useQuery` Hook's respone and name it 'userData' to be clearer
   const { data: userData } = useQuery(QUERY_ME_BASIC);
+  
   const thoughts = data?.thoughts || [];
   console.log(thoughts);
 
@@ -27,6 +28,7 @@ const Home = () => {
               <ThoughtList thoughts={thoughts} title="Some Feed for Thought(s)..." />
             )}
         </div>
+
     {loggedIn && userData ? (
       <div className="col-12 col-lg-3 mb-3">
         <FriendList
