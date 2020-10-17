@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/londonlast21/deep-thoughts#readme",
   "dependencies": {
+    "apollo": "^2.31.0",
     "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
