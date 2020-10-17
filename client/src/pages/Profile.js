@@ -4,21 +4,27 @@ import { useParams } from 'react-router-dom';
 import ThoughtList from '../components/ThoughtList';
 
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_USER } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import FriendList from '../components/FriendList';
+import Auth from '../utils/auth';
+import { Redirect, useParams } from 'react-router-dom';
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(QUERY_USER, {
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
   });
 
-  const user = data?.user || {};
+  const user = data?.me || data?.user || {};
+  // redirect to personal profile page if username is the logged-in user's
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+      return <Redirect to="/profile" />;
+    }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+      if (loading) {
+        return <div>Loading...</div>;
+    }
 
   return (
     <div>
