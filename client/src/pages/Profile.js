@@ -12,15 +12,17 @@ import Auth from '../utils/auth';
 import { Redirect, useParams } from 'react-router-dom';
 
 const Profile = () => {
-  const { username: userParams } = useParams();
-  const { loading, data } = useQuery(userParams ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParams }
+  const { username: userParam } = useParams();
+  console.log(userParam, 'userParams');
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam }
   });
+  console.log(data);
 
-  const user = data?.me || data?.user || {};
+  const user = data?.user || data?.me || {};
 
   // redirect to personal profile page if username is the logged-in user's
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParams) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
       return <Redirect to="/profile" />;
     }
 
