@@ -78,7 +78,7 @@ const Profile = () => {
             friends={user.friends}
             />
         </div>
-      </div>ssN
+      </div>
       <div claame="mb-3">{!userParam && <ThoughtForm />}</div>
     </div>
   );
